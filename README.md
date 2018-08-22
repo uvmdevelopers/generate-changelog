@@ -1,3 +1,24 @@
+# UVM comments
+
+Lokalni instalace z GitHub repo:
+```bash
+npm install uvmdevelopers/generate-changelog#master
+```
+
+Je potreba pridat soubor urls.json, podle predlohy ulozene v urls.json.sample. Slouzi pro ulozeni url, kde je dostupny konfiguracni .csv soubor.
+
+Spusteni z konzole (nova major verze):
+```bash
+./node_modules/.bin/changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags
+```
+
+Do scripts (package.json) doplnime tyto prikazy (stejne jako v originalni verzi, jen se upravi cesta k modulu):
+```json
+"release:major": "./node_modules/.bin/changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+"release:minor": "./node_modules/.bin/changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+"release:patch": "./node_modules/.bin/changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags",
+```
+
 # Generate Changelog
 
 [![NPM Version](https://badge.fury.io/js/generate-changelog.svg)](https://www.npmjs.com/package/generate-changelog)
