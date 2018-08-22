@@ -24,3 +24,5 @@ coverage
 xunit.xml
 
 urls.json
+
+package-lock.json
